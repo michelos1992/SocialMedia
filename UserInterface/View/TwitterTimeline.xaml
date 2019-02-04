@@ -1,0 +1,90 @@
+﻿<UserControl          x:Name="TwitterTimelineUserControl" 
+                      x:Class="UserInterface.View.TwitterTimeline"
+					  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					  xmlns:vm="clr-namespace:UserInterface.ViewModel"                     
+					  xmlns:converters="clr-namespace:UserInterface.Converters"
+                      Height="540" Background="#FF6CADDE">
+
+    <UserControl.Resources>
+        <vm:TwitterTimelineViewModel x:Key="TwitterTimelineViewModel"/>
+        <converters:BoolToColor x:Key="BoolToColor"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource ResourceKey=TwitterTimelineViewModel}">
+
+        <Image Source="/UserInterface;component/Icons/twitterlogo.png" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0"/>
+
+        <Button Content="Odśwież" Command="{Binding RefreshTweets}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Width="74" />
+
+        <ListView ItemsSource="{Binding Tweets}" SelectedItem="{Binding SelectedTweet}" HorizontalAlignment="Left" Height="423" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=TwitterTimelineUserControl, Mode=OneWay}" Margin="0,58,0,0"  >
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="True"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <StackPanel MaxWidth="230">
+
+                        <WrapPanel Margin="5">
+                            <Image Source="{Binding CreatedBy.ProfileImageUrl400x400}" Width="40" Height="40"/>
+                            <StackPanel Margin="5" >
+                                <TextBlock Text="Name: " />
+                                <TextBlock Text="{Binding CreatedBy.Name}" FontWeight="Bold" />
+                                <WrapPanel>
+                                    <TextBlock Text="Site: "/>
+                                    <TextBlock>
+                                        <Hyperlink Command="{Binding TwitterHyperlinkCommand, Source={StaticResource TwitterTimelineViewModel}}" CommandParameter="{Binding CreatedBy.Url}">
+										    <TextBlock Text="{Binding CreatedBy.Url}"/>
+									    </Hyperlink>
+                                    </TextBlock>
+                                </WrapPanel>
+                            </StackPanel>
+                        </WrapPanel>
+
+                        <TextBlock Margin="5" Text="{Binding Text}" TextWrapping="Wrap"/>
+
+                        <ItemsControl ItemsSource="{Binding Urls}" BorderThickness="0">
+                            <ItemsControl.Resources>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Focusable" Value="False"/>
+                                </Style>
+                            </ItemsControl.Resources>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <TextBlock Margin="5">
+                                        <Hyperlink Command="{Binding TwitterHyperlinkCommand, Source={StaticResource TwitterTimelineViewModel}}" CommandParameter="{Binding URL}">
+                                            <TextBlock  Text="{Binding DisplayedURL}" />                              
+                                        </Hyperlink>
+                                    </TextBlock>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <WrapPanel Margin="5">
+                            <TextBlock Text="Date: " />
+                            <TextBlock Text="{Binding CreatedAt}" FontWeight="Bold" />
+                        </WrapPanel>
+
+                        <WrapPanel Margin="5">
+                            <Button Command="{Binding LikeAndUnlikeTweet, Source={StaticResource TwitterTimelineViewModel}}" Background="White" Foreground="{Binding Favourited, Converter={StaticResource BoolToColor}}" FontFamily="Webdings" Content="y"/>
+                            <Label Content="{Binding FavouriteCount}"/>
+                            <TextBox Text="{Binding TweetCommentText, Source={StaticResource TwitterTimelineViewModel}}" Width="100" />
+                            <Button Command="{Binding CommentTweet, Source={StaticResource TwitterTimelineViewModel}}" Background="White" Foreground="Black" FontFamily="Webdings" Content=")"/>
+                            <Button Command="{Binding Retweet, Source={StaticResource TwitterTimelineViewModel}}" Background="White" Foreground="Black" FontFamily="Segoe UI" Content="RETWEET" Width="60"/>
+                        </WrapPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <Button Content="Przełącz Urzytkownika" Command="{Binding GetTwitterAuthorizationUrl}" HorizontalAlignment="Center" Margin="0,497,0,0" VerticalAlignment="Top" Width="147"/>
+
+    </Grid>
+</UserControl>

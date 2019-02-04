@@ -1,0 +1,61 @@
+﻿<UserControl          x:Name="InstagramTimelineUserControl" 
+                      x:Class="UserInterface.View.InstagramTimeline"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:vm="clr-namespace:UserInterface.ViewModel"
+                      xmlns:Instagram="clr-namespace:Instagram;assembly=Instagram"
+                      Height="540" Background="#FFD5C9BA">
+    <UserControl.Resources>
+        <vm:InstagramTimelineViewModel x:Key="InstagramTimelineViewModel"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource ResourceKey=InstagramTimelineViewModel}">
+        <Image Source="/UserInterface;component/Icons/InstagramLogo.jpg" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0"/>
+
+        <Button Content="Odśwież" Command="{Binding RefreshImages}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Width="74" />
+        <ListView ItemsSource="{Binding MyFeed}" SelectedItem="{Binding SelectedPost}" Width="{Binding ActualWidth, ElementName=InstagramTimelineUserControl, Mode=OneWay}" HorizontalAlignment="Left" Height="423" VerticalAlignment="Top" Margin="0,58,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel MinHeight="180">
+
+                        <WrapPanel Margin="5">
+                            <TextBlock>
+                            <Hyperlink Command="{Binding LinkImage, Source={StaticResource InstagramTimelineViewModel}}" CommandParameter="{Binding Images.StandardResolution.Url}" FontSize="10" >
+                                <Image Source="{Binding Images.Thumbnail.Url}"/>
+                            </Hyperlink>
+                            </TextBlock>
+                        </WrapPanel>
+                        <StackPanel>
+                            <WrapPanel>
+                                <TextBlock Text="Caption: " />
+                                <TextBlock Text="{Binding Caption.Text}" FontWeight="Bold" FontSize="12"/>
+                                <TextBlock Text="   Likes: " />
+                                <TextBlock Text="{Binding Likes.Count}" FontWeight="Bold" FontSize="12"/>
+                            </WrapPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <WrapPanel Margin="2">
+                                <TextBlock>
+                                   <Hyperlink Command="{Binding LinkImage, Source={StaticResource InstagramTimelineViewModel}}" CommandParameter="{Binding Link}" FontSize="10" >
+                                        <TextBlock Text="Link to post." />
+                                   </Hyperlink>
+                                </TextBlock>
+                            </WrapPanel>
+                        </StackPanel>
+                        <WrapPanel Margin="5">
+                            <TextBlock Text="Date: " />
+                            <TextBlock Text="{Binding CreatedTime}" FontWeight="Bold" />
+                        </WrapPanel>
+
+                        <WrapPanel Margin="5">
+                            <Button Command="{Binding LikeInsta, Source={StaticResource InstagramTimelineViewModel}}" Background="#9b6954" Foreground="White" Content="Like"/>
+                            <TextBox Text="{Binding CText, Source={StaticResource InstagramTimelineViewModel}}" Width="100" />
+                            <Button Command="{Binding Comments, Source={StaticResource InstagramTimelineViewModel}}" Background="#9b6954" Foreground="White" Content="Comment"/>
+                        </WrapPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

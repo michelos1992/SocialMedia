@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{2AC4A161-C96A-4D6D-900E-6D77C40D0455}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitter", "Twitter\Twitter.csproj", "{4F7ADD56-B3F5-419C-8877-4A4C3F8AAEF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram", "Instagram\Instagram.csproj", "{64472A51-7968-446E-9F8A-850EE0568D54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DE8F1725-BB05-41FD-A920-49DFB47A80E5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaFile", "IOService\MediaFile.csproj", "{B29DAA4D-452D-4886-A8D3-A96EBAF2342D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTube", "YouTube\YouTube.csproj", "{29143B5B-D526-4A84-B8BB-87202CB24B2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookAPI", "FacebookAPI\FacebookAPI.csproj", "{0723A499-1EDB-442F-91D9-696348EA0080}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AC4A161-C96A-4D6D-900E-6D77C40D0455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC4A161-C96A-4D6D-900E-6D77C40D0455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC4A161-C96A-4D6D-900E-6D77C40D0455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC4A161-C96A-4D6D-900E-6D77C40D0455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7ADD56-B3F5-419C-8877-4A4C3F8AAEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7ADD56-B3F5-419C-8877-4A4C3F8AAEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7ADD56-B3F5-419C-8877-4A4C3F8AAEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7ADD56-B3F5-419C-8877-4A4C3F8AAEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64472A51-7968-446E-9F8A-850EE0568D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64472A51-7968-446E-9F8A-850EE0568D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64472A51-7968-446E-9F8A-850EE0568D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64472A51-7968-446E-9F8A-850EE0568D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B29DAA4D-452D-4886-A8D3-A96EBAF2342D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B29DAA4D-452D-4886-A8D3-A96EBAF2342D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B29DAA4D-452D-4886-A8D3-A96EBAF2342D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B29DAA4D-452D-4886-A8D3-A96EBAF2342D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29143B5B-D526-4A84-B8BB-87202CB24B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29143B5B-D526-4A84-B8BB-87202CB24B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29143B5B-D526-4A84-B8BB-87202CB24B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29143B5B-D526-4A84-B8BB-87202CB24B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0723A499-1EDB-442F-91D9-696348EA0080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0723A499-1EDB-442F-91D9-696348EA0080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0723A499-1EDB-442F-91D9-696348EA0080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0723A499-1EDB-442F-91D9-696348EA0080}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+﻿<UserControl x:Name="TwitterAuthorizationUserControl" 
+             x:Class="UserInterface.View.TwitterAuthorization"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:UserInterface.ViewModel"
+             Height="540" Background="#FF6CADDE">
+    <UserControl.Resources>
+        <vm:TwitterAuthorizationViewModel x:Key="TwitterAuthorizationViewModel"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource ResourceKey=TwitterAuthorizationViewModel}">
+        <Image Source="/UserInterface;component/Icons/twitterlogo.png" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0"/>
+        <Label Content="TWITTER" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+        <Button Content="Pozyskaj Kod&#xD;&#xA;Do Autoryzacji" Command="{Binding GetTwitterCaptcha}" HorizontalAlignment="Center" Margin="0,93,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="WPISZ KOD CAPTCHA" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding TwitterCaptcha}" HorizontalAlignment="Center" Height="23" Margin="0,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Wyślij" Command="{Binding AuthorizeTwitter}" HorizontalAlignment="Center" Margin="0,279,0,0" VerticalAlignment="Top" Width="76"/>
+    </Grid>
+</UserControl>

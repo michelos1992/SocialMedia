@@ -1,0 +1,70 @@
+﻿<controls:MetroWindow x:Class="UserInterface.Client"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:v="clr-namespace:UserInterface.View"
+                      Title="MainWindow" WindowStartupLocation="CenterScreen"
+                      Width="1200" Height="600">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="Icons/Background.jpeg"/>
+    </controls:MetroWindow.Background>
+
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="1130"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content=">>" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Click="OpenPostTab" />
+            
+            <v:PostTab x:Name="PostTab" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1"/>
+
+            <controls:MetroAnimatedTabControl x:Name="TwitterTab" Margin="250,0,0,0" Grid.Column="1">
+                <TabItem Header="Timeline" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:TwitterTimeline x:Name="TwitterTimelineUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+                <TabItem Header="Authorization" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:TwitterAuthorization x:Name="TwitterAuthorizationUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+            </controls:MetroAnimatedTabControl>
+
+            <controls:MetroAnimatedTabControl x:Name="FacebookTab" Margin="470,0,0,0" Grid.Column="1">
+                <TabItem Header="Timeline" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:FacebookTimeline x:Name="FacebookTimelineUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+                <TabItem Header="Authorization" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:FacebookAuthorization x:Name="FacebookAuthorizationUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+            </controls:MetroAnimatedTabControl>
+            <controls:MetroAnimatedTabControl x:Name="InstagramTab" Margin="690,0,0,0" Grid.Column="1">
+                <TabItem Header="Timeline" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:InstagramTimeline x:Name="InstagramTimelineUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+                <TabItem Header="Authorization" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:InstagramAuthorization x:Name="InstagramAuthorizationUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+            </controls:MetroAnimatedTabControl>
+
+            <controls:MetroAnimatedTabControl x:Name="YoutubeTab" Margin="910,0,0,0" Grid.Column="1">
+                <TabItem Header="Timeline" controls:ControlsHelper.HeaderFontSize="16">
+                    <controls:MetroContentControl HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <v:YouTubeTimeline x:Name="YouTubeTimelineUserControl" Width="210"/>
+                    </controls:MetroContentControl>
+                </TabItem>
+            </controls:MetroAnimatedTabControl>
+        </Grid>
+    </Viewbox>
+</controls:MetroWindow>

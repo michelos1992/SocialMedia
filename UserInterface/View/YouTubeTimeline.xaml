@@ -1,0 +1,63 @@
+﻿<UserControl          x:Name="YouTubeTimelineUserControl" 
+                      x:Class="UserInterface.View.YouTubeTimeline"
+					  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					  xmlns:vm="clr-namespace:UserInterface.ViewModel"                     
+					  xmlns:converters="clr-namespace:UserInterface.Converters"
+					  xmlns:v="clr-namespace:UserInterface.View"  
+                      Height="540" Background="#FFC8312B">
+    <UserControl.Resources>
+        <vm:YouTubeTimelineViewModel x:Key="YouTubeTimelineViewModel"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource ResourceKey=YouTubeTimelineViewModel}" >
+
+        <Image Source="/UserInterface;component/Icons/YouTubeLogo.png" Margin="0,0,151,499" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <Button Content="Odśwież" Command="{Binding RefreshYouTube}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="74" />
+        <TextBox Margin="10,46,42,465" Text="{Binding Path=Query}"/>
+        <Button Margin="168,46,10,465" Command="{Binding SearchVideo}">
+            <Image Source="/UserInterface;component/Icons/lupas.png" Margin="-4,-4,-4,-4"/>
+        </Button>
+        <ListView ItemsSource="{Binding Repository}" Width="{Binding ActualWidth, ElementName=YouTubeTimelineUserControl, Mode=OneWay}" HorizontalAlignment="Left" Height="401" VerticalAlignment="Top" Margin="0,80,0,0" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel MaxWidth="230">
+
+                        <WrapPanel Margin="2">
+                            <StackPanel Margin="2" >
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </WrapPanel>
+
+                        <WrapPanel Margin="2">
+                            <TextBlock Text="Date: " FontWeight="Normal" FontSize="8" />
+                            <TextBlock Text="{Binding PublishedDate}" FontWeight="Normal" FontSize="8" />
+                        </WrapPanel>
+
+                        <WrapPanel Margin="2">
+                            <Image Source="{Binding ImageUrl}" />
+                        </WrapPanel>
+
+                        <WrapPanel Margin="2">
+                            <StackPanel Margin="2" >
+                                <TextBlock Text="{Binding Description}" FontWeight="Normal" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </WrapPanel>
+
+                        <WrapPanel Margin="5">
+                            <TextBlock Text="Watch: "/>
+                            <TextBlock>
+                                <Hyperlink Command="{Binding HyperlinkWatch, Source={StaticResource YouTubeTimelineViewModel}}" CommandParameter="{Binding VideoId}">
+											Click here
+									</Hyperlink>
+                            </TextBlock>
+                        </WrapPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+   
+</UserControl>

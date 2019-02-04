@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="UserInterface.View.PostTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:UserInterface.ViewModel"
+             xmlns:converters="clr-namespace:UserInterface.Converters"
+             Width="240" Height="570">
+    <UserControl.Resources>
+        <vm:PostTabViewModel x:Key="PostTabViewModel"/>
+        <converters:BoolToDouble x:Key="BoolToDouble"/>
+    </UserControl.Resources>
+
+    <Grid>
+        
+        <Grid DataContext="{StaticResource ResourceKey=PostTabViewModel}" Background="#FFD6C8AD">
+          
+            <Label Content="POST TAB" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+
+            <Button HorizontalAlignment="Left" Height="70" Width="70" Margin="30,70,0,0" VerticalAlignment="Top" Command="{Binding TwitterIconCommand}" Opacity="{Binding TwitterIconOpacity, Converter={StaticResource BoolToDouble}}" Padding="0" >
+                <Image Source="/UserInterface;component/Icons/TwitterLogo.png"/>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Height="70" Width="70" Margin="135,70,0,0" VerticalAlignment="Top" Command="{Binding FacebookIconCommand}" Opacity="{Binding FacebookIconOpacity, Converter={StaticResource BoolToDouble}}" Padding="0" >
+                <Image Source="/UserInterface;component/Icons/FacebookLogo.png"/>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Height="70" Width="70" Margin="30,164,0,0" VerticalAlignment="Top" Command="{Binding InstagramIconCommand}" Opacity="{Binding InstagramIconOpacity, Converter={StaticResource BoolToDouble}}" Padding="1,0,0,0" >
+                <Image  Source="/UserInterface;component/Icons/InstagramLogo.jpg"/>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Height="70" Width="70" Margin="135,164,0,0" VerticalAlignment="Top" Command="{Binding YoutubeIconCommand}" Opacity="{Binding YoutubeIconOpacity, Converter={StaticResource BoolToDouble}}" Padding="0" Click="YoutubeIconClick" >
+                <Image  Source="/UserInterface;component/Icons/YouTubeLogo.png"/>
+            </Button>
+
+            <TextBox Text="{Binding Text}" HorizontalAlignment="Left" Height="150" Margin="7,276,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="226" />
+            <Button Content="Dodaj Plik" Command="{Binding AddFile}" HorizontalAlignment="Left" Margin="23,450,0,0" VerticalAlignment="Top" Width="75" />
+            <Button Content="Wyślij" Command="{Binding Publish}"  HorizontalAlignment="Left" Margin="138,450,0,0" VerticalAlignment="Top" Width="76" />
+            <TextBox Text="{Binding Tittle}" Name="YoutubeTitleText" Visibility="Hidden"  HorizontalAlignment="Left" Height="23" Margin="66,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
+            <Label x:Name="YoutubeTitle" Visibility="Hidden" Content="Tytuł:" HorizontalAlignment="Left" Margin="23,245,0,0" VerticalAlignment="Top" Width="43"/>
+
+        </Grid>
+    </Grid>
+</UserControl>
